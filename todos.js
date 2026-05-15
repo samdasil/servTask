@@ -17,7 +17,35 @@ const buttonErase = document.querySelector('#erase');
 const currentListSelect = document.querySelector('#currentListSelect');
 const addNewListBtn = document.querySelector('#addNewList');
 const deleteListBtn = document.querySelector('#deleteList');
+const themeToggleBtn = document.querySelector('#themeToggle');
 const listTitle = document.querySelector('#listTitle');
+
+// Theme Logic
+const toggleTheme = () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('TodoTheme', newTheme);
+    updateThemeIcon(newTheme);
+};
+
+const updateThemeIcon = (theme) => {
+    const icon = themeToggleBtn.querySelector('i');
+    if (theme === 'dark') {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    }
+};
+
+// Init Theme
+const savedTheme = localStorage.getItem('TodoTheme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+window.addEventListener('DOMContentLoaded', () => updateThemeIcon(savedTheme));
+
+themeToggleBtn.onclick = toggleTheme;
 
 // State
 let AppData = {
