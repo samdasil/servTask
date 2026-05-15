@@ -19,13 +19,20 @@
     <div id="app" class="list">
 
         <div class="list-header">
-            <select id="currentListSelect"></select>
-            <button id="addNewList">
-                <i class="fa fa-plus-circle" aria-hidden="true"></i>
-            </button>
-            <button id="deleteList" class="bg-red">
-                <i class="fa fa-trash" aria-hidden="true"></i>
-            </button>
+            <div class="header-main">
+                <select id="currentListSelect"></select>
+                <div class="header-actions">
+                    <button id="themeToggle" title="Alternar Tema">
+                        <i class="fa fa-moon" aria-hidden="true"></i>
+                    </button>
+                    <button id="addNewList" title="Nova Lista">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    </button>
+                    <button id="deleteList" class="bg-red" title="Deletar Lista">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <h2 id="listTitle">Minha Lista</h2>
