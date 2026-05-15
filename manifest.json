@@ -2,7 +2,7 @@
   "name": "To-Do List PWA",
   "short_name": "To-Do",
   "description": "Uma lista de tarefas simples e eficiente.",
-  "start_url": "nova-lista.html",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#111111",
   "theme_color": "#03a9f4",
