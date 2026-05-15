@@ -1,6 +1,6 @@
 const CACHE_NAME = 'todo-pwa-v1';
 const ASSETS = [
-  'nova-lista.html',
+  'index.html',
   'style.css',
   'todos.js',
   'favicon.png',
