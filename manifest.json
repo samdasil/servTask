@@ -1,6 +1,6 @@
 {
-  "name": "To-Do List Premium",
-  "short_name": "To-Do",
+  "name": "ServTask - Lista de Tarefas",
+  "short_name": "ServTask",
   "description": "Uma lista de tarefas moderna, rápida e instalável.",
   "start_url": "./",
   "scope": "./",
