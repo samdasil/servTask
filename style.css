@@ -1,24 +1,21 @@
 @import url('http://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 
-*
-{
+* {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body 
-{
+body {
     display: flex;
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
     background: #111;
 }
 
-.list 
-{
+.list {
     position: relative;
     background: #fff;
     width: 100vw;
@@ -28,8 +25,7 @@ body
     box-shadow: 0px -5px 25px 0px rgb(251 251 251 / 90%);
 }
 
-.list h2 
-{
+.list h2 {
     background: #03a9f4;
     color: #fff;
     padding: 10px 20px;
@@ -75,27 +71,23 @@ body
     background-color: #f44336;
 }
 
-.list ul
-{
+.list ul {
     position: relative;
     padding: 20px;
 }
 
-.list ul li 
-{
+.list ul li {
     position: relative;
     list-style: none;
     padding: 15px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.list ul li:last-child
-{
+.list ul li:last-child {
     border-bottom: none;
 }
 
-.list ul li label 
-{
+.list ul li label {
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -103,19 +95,16 @@ body
     cursor: pointer;
 }
 
-.list ul li label input
-{
+.list ul li label input {
     visibility: hidden;
     appearance: none;
 }
 
-.list ul li label p 
-{
+.list ul li label p {
     position: absolute;
 }
 
-.list ul li label span 
-{
+.list ul li label span {
     position: relative;
     width: 20px;
     height: 20px;
@@ -126,8 +115,7 @@ body
     align-items: center;
 }
 
-.list ul li label span:before 
-{
+.list ul li label span:before {
     content: '';
     position: absolute;
     top: 5px;
@@ -138,33 +126,28 @@ body
     transform: rotate(-40deg);
 }
 
-.list ul li label input:checked ~ p
-{
+.list ul li label input:checked~p {
     text-decoration: line-through;
     color: #ccc;
 }
 
-.list ul li label input:checked ~ span 
-{
+.list ul li label input:checked~span {
     background: #03a9f4;
     border: 1px solid #03a9f4;
 }
 
-.list ul li label input:checked ~ span::before
-{
+.list ul li label input:checked~span::before {
     border-left: 2px solid #fff;
     border-bottom: 2px solid #fff;
 }
 
-.list .addTodo 
-{
+.list .addTodo {
     padding: 15px 10px;
     display: flex;
     justify-content: space-between;
 }
 
-.list .addTodo input 
-{
+.list .addTodo input {
     border-radius: 4px;
     height: auto;
     border-style: none;
@@ -176,17 +159,16 @@ body
     width: 80%;
 }
 
-.list .addTodo input:focus-visible{
+.list .addTodo input:focus-visible {
     border-color: #cecece;
 }
 
-.list .addTodo input:focus{
+.list .addTodo input:focus {
     box-shadow: 0 0 0 0;
     outline: 0;
 }
 
-.list .addTodo button
-{
+.list .addTodo button {
 
     position: relative;
     width: 50px;
@@ -197,18 +179,17 @@ body
 
 }
 
-.list .addTodo button span i 
-{
+.list .addTodo button span i {
     color: rgb(240, 245, 248);
 }
 
-.list .footer{
+.list .footer {
     padding: 15px 10px;
     position: relative;
     padding-top: 100px;
 }
 
-.footer-button{
+.footer-button {
     position: relative;
     width: 50px;
     height: 50px;
@@ -217,30 +198,30 @@ body
     background: rgb(231 199 110);
 }
 
-.footer .options{
+.footer .options {
     display: grid;
     grid-template-columns: auto;
     gap: 10px;
 }
 
-.footer .options .option-item{
+.footer .options .option-item {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
 
-@media screen and (min-width: 720px){
-    .footer .options .option-item{
+@media screen and (min-width: 720px) {
+    .footer .options .option-item {
         justify-content: flex-end;
     }
 }
 
-.footer .options .option-item p{
+.footer .options .option-item p {
     font-size: 0.9rem;
 }
 
-.bg-red{
+.bg-red {
     background-color: red;
     color: #FFF;
 }

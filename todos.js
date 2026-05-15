@@ -84,7 +84,7 @@ function createToDoItem(todoText) {
     const textNode = document.createTextNode(todoText);
 
     inputItemElement.setAttribute('type', 'checkbox');
-    
+
     labelElement.appendChild(inputItemElement);
     labelElement.appendChild(pElement);
     labelElement.appendChild(spanElement);
