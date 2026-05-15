@@ -10,7 +10,7 @@ if ('serviceWorker' in navigator) {
 }
 
 // Elements
-const listElement = document.querySelector('#app ul');
+const listElement = document.querySelector('#todoList');
 const inputElement = document.querySelector('#app .addTodo input');
 const buttonElement = document.querySelector('#app .addTodo button');
 const buttonErase = document.querySelector('#erase');
@@ -61,12 +61,10 @@ const loadData = () => {
     if (savedData) {
         AppData = JSON.parse(savedData);
     } else {
-        // Migration from old schema
         const oldData = localStorage.getItem('ListItems');
         if (oldData) {
             const items = JSON.parse(oldData);
             AppData.lists[0].items = items;
-            // Clean up old data
             localStorage.removeItem('ListItems');
         }
     }
@@ -97,35 +95,54 @@ function renderTodo() {
     listElement.innerHTML = '';
     const currentList = AppData.lists[AppData.currentListIndex];
     if (currentList) {
-        currentList.items.forEach(todo => {
-            createToDoItem(todo);
+        currentList.items.forEach((todo, index) => {
+            createToDoItem(todo, index);
         });
     }
 }
 
-function createToDoItem(todoText) {
+function createToDoItem(todoText, index) {
     const todoElement = document.createElement('li');
+    
     const labelElement = document.createElement('label');
     const inputItemElement = document.createElement('input');
-    const pElement = document.createElement('p');
-    const spanElement = document.createElement('span');
-    const textNode = document.createTextNode(todoText);
-
     inputItemElement.setAttribute('type', 'checkbox');
+    
+    const spanElement = document.createElement('span');
+    const pElement = document.createElement('p');
+    pElement.textContent = todoText;
+
+    const editBtn = document.createElement('i');
+    editBtn.className = 'fa fa-edit edit-todo';
+    editBtn.onclick = (e) => {
+        e.preventDefault();
+        editTask(index);
+    };
 
     labelElement.appendChild(inputItemElement);
-    labelElement.appendChild(pElement);
     labelElement.appendChild(spanElement);
-    pElement.appendChild(textNode);
+    labelElement.appendChild(pElement);
+    
     todoElement.appendChild(labelElement);
+    todoElement.appendChild(editBtn);
     listElement.appendChild(todoElement);
 }
 
 // Actions
+function editTask(index) {
+    const currentItems = AppData.lists[AppData.currentListIndex].items;
+    const newText = prompt('Editar tarefa:', currentItems[index]);
+    
+    if (newText !== null && newText.trim() !== '') {
+        currentItems[index] = newText.trim();
+        saveData();
+        renderTodo();
+    }
+}
+
 function addTodoInArray() {
     const todoText = inputElement.value.trim();
 
-    // 2. Não deixar incluir uma tarefa vazia
     if (todoText === '') {
         alert('Por favor, digite uma tarefa!');
         return;
@@ -133,8 +150,8 @@ function addTodoInArray() {
 
     AppData.lists[AppData.currentListIndex].items.push(todoText);
     inputElement.value = '';
-    createToDoItem(todoText);
     saveData();
+    renderTodo();
 }
 
 function addNewList() {
