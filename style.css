@@ -255,11 +255,21 @@ select {
 
 /* Footer with fixed clear button */
 .footer {
-    padding: 10px 25px 25px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 0;
     background: var(--bg-card);
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow);
+    z-index: 100;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
 }
+
 
 .footer-button {
     background: var(--danger-color);
