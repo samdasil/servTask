@@ -1,3 +1,8 @@
+[v2.2.2] - 18/05/2026
+- Correção de sobreposição do rodapé
+- Modernização do design e tipografia da marca "ServTask by ServCkick"
+- Transição da ação "Limpar Lista" para botão elegante com ícone moderno (fa-broom) e hover/shadow premium
+
 [v2.2.1] - 15/05/2026
 - adição de rodapé
 
