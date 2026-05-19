@@ -32,6 +32,9 @@
                     <button id="themeToggle" title="Alternar Tema">
                         <i class="fa fa-moon" aria-hidden="true"></i>
                     </button>
+                    <button id="shareList" title="Compartilhar Lista">
+                        <i class="fa fa-share-alt" aria-hidden="true"></i>
+                    </button>
                     <button id="addNewList" title="Nova Lista">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i>
                     </button>
@@ -42,7 +45,12 @@
             </div>
         </div>
 
-        <h2 id="listTitle">Minhas tarefas</h2>
+        <div class="title-container">
+            <h2 id="listTitle">Minhas tarefas</h2>
+            <span id="syncStatus" class="sync-status local" title="Salvo localmente neste dispositivo">
+                <i class="fa fa-cloud" aria-hidden="true"></i>
+            </span>
+        </div>
 
         <div class="list-content">
             <ul id="todoList">
@@ -71,11 +79,24 @@
             <span class="footer-brand">
                 <span class="brand-app">ServTask</span>
                 <span class="brand-by">by</span>
-                <span class="brand-company">ServCkick</span>
+                <span class="brand-company">ServClick</span>
             </span>
         </div>
 
     </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-notification">
+        <i class="fa fa-check-circle" aria-hidden="true"></i>
+        <span class="toast-message">Link copiado para a área de transferência!</span>
+    </div>
+
+    <!-- Firebase SDK (Compat Version) -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <!-- Configuration (Credentials) -->
+    <script src="config.js"></script>
 
     <script src="todos.js"></script>
 
