@@ -81,16 +81,62 @@ html {
     justify-content: flex-end;
 }
 
+.title-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 25px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--primary-color);
+    align-self: flex-start;
+}
+
 .list h2 {
     color: var(--primary-color);
     font-weight: 700;
     font-size: 1.1rem;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin: 10px 25px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid var(--primary-color);
-    align-self: flex-start;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.sync-status {
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.sync-status.local {
+    color: var(--text-secondary);
+    opacity: 0.45;
+}
+
+.sync-status.synced {
+    color: var(--success-color);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 4px rgba(76, 175, 80, 0.3));
+    animation: pulseSync 2s infinite ease-in-out;
+}
+
+.sync-status.syncing {
+    color: var(--primary-color);
+    opacity: 0.9;
+    animation: spinSync 1.5s infinite linear;
+}
+
+@keyframes pulseSync {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
+@keyframes spinSync {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* Scrollable Content */
@@ -142,6 +188,7 @@ select {
 }
 
 #themeToggle { background: var(--text-primary); color: var(--bg-card); }
+#shareList { background-color: var(--accent-color); }
 #addNewList { background-color: var(--success-color); }
 #deleteList { background-color: var(--danger-color); }
 
@@ -208,8 +255,15 @@ select {
 .list ul li label input:checked ~ span { background: var(--primary-color); }
 .list ul li label input:checked ~ span::after { display: block; }
 
-/* Edit button styling */
-.edit-todo {
+/* Actions wrapper for list item */
+.todo-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Edit and Delete button styling */
+.edit-todo, .delete-todo {
     color: var(--text-secondary);
     cursor: pointer;
     padding: 5px;
@@ -219,6 +273,43 @@ select {
 
 .edit-todo:hover {
     color: var(--primary-color);
+}
+
+.delete-todo:hover {
+    color: var(--danger-color);
+}
+
+/* Drag and Drop styling */
+.drag-handle {
+    color: var(--text-secondary);
+    cursor: grab;
+    padding: 5px 8px 5px 2px;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+
+.drag-handle:hover {
+    color: var(--primary-color);
+}
+
+.drag-handle:active {
+    cursor: grabbing;
+}
+
+.list ul li.dragging {
+    opacity: 0.45;
+    border: 1.5px dashed var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.list ul li.drag-over {
+    border-top: 2px solid var(--primary-color);
+    margin-top: 6px;
+    margin-bottom: 18px;
+    transition: margin 0.2s ease, border 0.1s ease;
 }
 
 /* Add Todo Bottom section */
@@ -320,6 +411,46 @@ select {
 
 .footer-button:active {
     transform: translateY(0);
+}
+
+/* Toast Notification Styles */
+.toast-notification {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 14px 28px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+[data-theme="dark"] .toast-notification {
+    background: rgba(30, 30, 30, 0.85);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.toast-notification.show {
+    bottom: 40px;
+}
+
+.toast-notification i {
+    color: var(--success-color);
+    font-size: 1.1rem;
 }
 
 @media (max-width: 480px) {
